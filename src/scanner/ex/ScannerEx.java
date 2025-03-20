@@ -128,6 +128,7 @@ public class ScannerEx {
             }
             System.out.print("상품의 수량을 입력하세요 : ");
             int quantity = scanner.nextInt();
+            scanner.nextLine();
             int totalcost = price * quantity;
             System.out.println("총 비용 : " + totalcost);
         }
@@ -148,5 +149,62 @@ public class ScannerEx {
                 입력한 숫자들의 합계: 10 입력한 숫자들의 평균: 2.5
          */
 
+        int sum = 0;
+        int count = 0;
+        double average;
+
+        while (true) {
+            System.out.print("원하는 숫자를 입력해주세요 (입력을 중단하려면 -1을 입력하세요) : ");
+            num = scanner.nextInt();
+            if (num == -1) {
+                System.out.println("프로그램을 종료합니다.");
+                break;
+            }
+            sum += num;
+            count++;
+        }
+        average = (double) sum / count;
+        System.out.println("입력한 숫자들의 합계 : " + sum + ", 입력한 숫자들의 평균 : " + average);
+
+        /*
+            10. 상품 구매
+            - 사용자로부터 상품 정보(상품명, 가격, 수량)를 입력받고, 이들의 총 가격을 출력하는 프로그램을 작성하세요.
+                사용자는 여러 상품을 추가하고 결제할 수 있으며, 프로그램을 언제든지 종료할 수 있습니다.
+            - 사용자에게 다음 세 가지 옵션을 제공해야 합니다 : 1: 상품 입력, 2 : 결제, 3 : 프로그램 종료.
+                옵션은 정수로 입력받으며, 옵션을 저장하는 변수의 이름은 option이어야 합니다.
+            - 상품 입력 옵션을 선택하면, 사용자에게 상품명과 가격, 수량을 입력받으세요.
+            - 결제 옵션을 선택하면, 총 비용을 출력하고 총 비용을 0으로 초기화하세요. (사용자가 총 비용을 확인하고,
+                결제를 환료했다고 가정합니다. 따라서 다음 사용자를 위해 총 비용을 다시 0으로 초기화 해야합니다.)
+            - 프로그램 종료 옵션을 선택하면, "프로그램을 종료합니다."라는 메시지를 출력하고 프로그램을 종료하세요.
+            - 위의 세 가지 옵션 외에 다른 값을 입력하면, "올바른 옵션을 선택해주세요."라는 메시지를 출력하세요.
+         */
+        int productPrice = 0;
+        int productQuntity = 0;
+        String productName = "";
+        while (true) {
+            System.out.println("1. 상품 입력 \n2. 결제 \n3. 프로그램 종료\n(** 옵션은 정수로 입력해주세요 **)");
+            int option = scanner.nextInt();
+            scanner.nextLine();
+            if (option == 3) {
+                System.out.println("프로그램을 종료합니다.");
+                break;
+            } else if (option == 1) {
+                System.out.print("상품명을 입력해주세요 : ");
+                productName = scanner.nextLine();
+                System.out.print("상품 가격을 입력해주세요 : ");
+                productPrice = scanner.nextInt();
+                System.out.print("상품 수량을 입력해주세요 : ");
+                productQuntity = scanner.nextInt();
+            } else if (option == 2) {
+                totalPrice = productPrice * productQuntity;
+                System.out.println("상품명 : " + productName + ", 총 비용 : " + totalPrice);
+                productName = "";
+                productQuntity = 0;
+                productPrice = 0;
+                totalPrice = 0;
+            } else {
+                System.out.println("올바른 옵션을 선택해 주세요!!");
+            }
+        }
     }
 }
