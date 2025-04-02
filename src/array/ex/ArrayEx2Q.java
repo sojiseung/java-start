@@ -26,40 +26,74 @@ public class ArrayEx2Q {
                 - int[] productPrices : 상품 가격을 저장할 int 배열
                 - int productCount : 현재 등록된 상품의 개수를 저장할 int 변수
          */
-        Scanner scanner = new Scanner(System.in);   // Scanner 객체
-        String[] productNames = new String[10];     // 상품 이름
-        int[] productPrices = new int[10];          // 상품 가격
-        int productCount = 0;                       // 등록된 상품의 개수
+        Scanner scanner = new Scanner(System.in);
+        String[] productNames = new String[10];
+        int[] productPrices = new int[10];
+        int productCount = 0;
 
         while (true) {
-            System.out.print("1. 상품 등록 | 2. 상품 목록 | 3. 종료\n메뉴를 선택하세요 : " );
+            System.out.println("원하시는 옵션을 선택해주세요.\n1. 상품등록\n2. 상품목록\n3. 종료");
             int option = scanner.nextInt();
-            scanner.nextLine(); // 개행문자 제거
+            scanner.nextLine();
 
-            if (option == 3) {
-                System.out.println("시스템을 종료합니다.");
-                break;
-            } else if (option == 1) {
-                if (productCount < 10) {
-                    System.out.print("상품 이름을 입력하세요 : ");
-                    productNames[productCount] = scanner.nextLine();
-                    System.out.print("상품 가격을 입력하세요 : ");
-                    productPrices[productCount] = scanner.nextInt();
-                    productCount++;
-                } else {
-                    System.out.println("더 이상 상품을 등록할 수 없습니다.");
+            if (option == 1) {
+                if (productCount == 10) {
+                    System.out.println("상품이 10개가 등록이 되었습니다.");
+                    continue;
                 }
+                System.out.print("상품 이름 : ");
+                productNames[productCount] = scanner.nextLine();
+                System.out.print("상품 가격 : ");
+                productPrices[productCount] = scanner.nextInt();
+                scanner.nextLine();
+                productCount++;
             } else if (option == 2) {
-                for (int i = 0; productCount > i; i++) {
-                    if (!productNames.equals("null")) {
-                        System.out.println(productNames[i] + " : " + productPrices[i] + "원");
-                    }
+                for (int i = 0; i < productCount; i++) {
+                    System.out.println("상품명 : " + productNames[i] + ", 상품가격 : " + productPrices[i]);
                 }
+            } else if (option == 3) {
+                System.out.println("프로그램을 종료합니다.");
+                break;
             } else {
-                System.out.println("잘못된 메뉴를 선택하셨습니다.");
+                System.out.println("잘못된 입력입니다.");
             }
-
         }
+
+
+//        Scanner scanner = new Scanner(System.in);   // Scanner 객체
+//        String[] productNames = new String[10];     // 상품 이름
+//        int[] productPrices = new int[10];          // 상품 가격
+//        int productCount = 0;                       // 등록된 상품의 개수
+//
+//        while (true) {
+//            System.out.print("1. 상품 등록 | 2. 상품 목록 | 3. 종료\n메뉴를 선택하세요 : " );
+//            int option = scanner.nextInt();
+//            scanner.nextLine(); // 개행문자 제거
+//
+//            if (option == 3) {
+//                System.out.println("시스템을 종료합니다.");
+//                break;
+//            } else if (option == 1) {
+//                if (productCount < 10) {
+//                    System.out.print("상품 이름을 입력하세요 : ");
+//                    productNames[productCount] = scanner.nextLine();
+//                    System.out.print("상품 가격을 입력하세요 : ");
+//                    productPrices[productCount] = scanner.nextInt();
+//                    productCount++;
+//                } else {
+//                    System.out.println("더 이상 상품을 등록할 수 없습니다.");
+//                }
+//            } else if (option == 2) {
+//                for (int i = 0; productCount > i; i++) {
+//                    if (!productNames.equals("null")) {
+//                        System.out.println(productNames[i] + " : " + productPrices[i] + "원");
+//                    }
+//                }
+//            } else {
+//                System.out.println("잘못된 메뉴를 선택하셨습니다.");
+//            }
+//
+//        }
 
 
     }
